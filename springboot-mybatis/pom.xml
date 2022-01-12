@@ -42,6 +42,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--mysql驱动包-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -83,6 +88,20 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <!--运行dao模块添加如下插件-->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <configuration>
+                    <!--允许移动生成的文件-->
+                    <verbose>true</verbose>
+                    <!--启用覆盖-->
+                    <overwrite>true</overwrite>
+                    <!--自动生成配置 如果名字是generatorConfig.xml可以省略配置-->
+                    <!--<configurationFile>src/main/resources/generatorConfig.xml</configurationFile>-->
+                </configuration>
             </plugin>
         </plugins>
     </build>
