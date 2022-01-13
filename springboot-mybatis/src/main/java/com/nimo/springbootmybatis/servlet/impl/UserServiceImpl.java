@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int insertSelective(OrmUser record) {
-        return ormUserMapper.insertSelective(record);
+        return ormUserMapper.insert(record);
     }
 
     @Override

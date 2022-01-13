@@ -27,12 +27,12 @@ public class UserController {
     }
 
     @PutMapping("/add")
-    public void save(OrmUser user) {
+    public void save(@RequestBody OrmUser user) {
         userService.insertSelective(user);
     }
 
     @PutMapping(value = "update")
-    public void update(OrmUser user) {
+    public void update(@RequestBody OrmUser user) {
         userService.updateByPrimaryKeySelective(user);
     }
 
