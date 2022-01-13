@@ -1,5 +1,8 @@
 package com.nimo.springbootmybatis.servlet.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.nimo.springbootmybatis.entity.OrmUser;
 import com.nimo.springbootmybatis.mapper.OrmUserMapper;
 import com.nimo.springbootmybatis.servlet.UserService;
@@ -37,6 +40,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<OrmUser> getAll() {
         return ormUserMapper.getAll();
+    }
+
+    @Override
+    public PageInfo<OrmUser> pageAll(Integer page, Integer size) {
+        return PageHelper.startPage(page, size).doSelectPageInfo(() -> ormUserMapper.getAll());
     }
 
 }

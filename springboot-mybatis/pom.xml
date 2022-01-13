@@ -47,6 +47,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <!--分页-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-sample-xml</artifactId>
+            <version>1.4.1</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

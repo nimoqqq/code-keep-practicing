@@ -1,5 +1,6 @@
 package com.nimo.springbootmybatis.servlet;
 
+import com.github.pagehelper.PageInfo;
 import com.nimo.springbootmybatis.entity.OrmUser;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface UserService {
     int updateByPrimaryKeySelective(OrmUser record);
 
     List<OrmUser> getAll();
+
+    PageInfo<OrmUser> pageAll(Integer page, Integer size);
 }
