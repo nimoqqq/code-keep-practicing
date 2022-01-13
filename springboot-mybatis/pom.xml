@@ -102,6 +102,13 @@
                     <!--自动生成配置 如果名字是generatorConfig.xml可以省略配置-->
                     <!--<configurationFile>src/main/resources/generatorConfig.xml</configurationFile>-->
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.22</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
