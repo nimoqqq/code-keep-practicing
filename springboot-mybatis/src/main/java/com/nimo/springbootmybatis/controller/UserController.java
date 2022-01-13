@@ -3,7 +3,7 @@ package com.nimo.springbootmybatis.controller;
 import com.github.pagehelper.PageInfo;
 import com.nimo.springbootmybatis.base.PageData;
 import com.nimo.springbootmybatis.entity.OrmUser;
-import com.nimo.springbootmybatis.servlet.UserService;
+import com.nimo.springbootmybatis.servlet.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;

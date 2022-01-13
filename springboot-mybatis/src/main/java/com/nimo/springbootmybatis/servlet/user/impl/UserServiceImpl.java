@@ -1,11 +1,10 @@
-package com.nimo.springbootmybatis.servlet.impl;
+package com.nimo.springbootmybatis.servlet.user.impl;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.nimo.springbootmybatis.entity.OrmUser;
 import com.nimo.springbootmybatis.mapper.OrmUserMapper;
-import com.nimo.springbootmybatis.servlet.UserService;
+import com.nimo.springbootmybatis.servlet.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

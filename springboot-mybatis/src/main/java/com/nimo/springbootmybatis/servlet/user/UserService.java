@@ -1,4 +1,4 @@
-package com.nimo.springbootmybatis.servlet;
+package com.nimo.springbootmybatis.servlet.user;
 
 import com.github.pagehelper.PageInfo;
 import com.nimo.springbootmybatis.entity.OrmUser;

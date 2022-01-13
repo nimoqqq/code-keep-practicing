@@ -18,4 +18,6 @@ public interface OrmUserMapper {
     int updateByPrimaryKey(OrmUser record);
 
     List<OrmUser> getAll();
+
+    void addByOneSQL(List<OrmUser> users);
 }
