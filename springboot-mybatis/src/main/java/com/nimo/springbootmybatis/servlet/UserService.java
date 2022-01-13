@@ -1,23 +1,17 @@
-package com.nimo.springbootmybatis.mapper;
+package com.nimo.springbootmybatis.servlet;
 
 import com.nimo.springbootmybatis.entity.OrmUser;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface OrmUserMapper {
+public interface UserService {
     int deleteByPrimaryKey(Integer id);
-
-    int insert(OrmUser record);
 
     int insertSelective(OrmUser record);
 
     OrmUser selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(OrmUser record);
-
-    int updateByPrimaryKey(OrmUser record);
 
     List<OrmUser> getAll();
 }

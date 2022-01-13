@@ -23,6 +23,13 @@
     from orm_user
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="getAll" resultType="com.nimo.springbootmybatis.entity.OrmUser">
+    select
+    <include refid="Base_Column_List" />
+    from orm_user
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from orm_user
     where id = #{id,jdbcType=INTEGER}
