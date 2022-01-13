@@ -2,6 +2,7 @@ package com.nimo.springbootmybatis.controller;
 
 import com.nimo.springbootmybatis.entity.OrmUser;
 import com.nimo.springbootmybatis.servlet.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,17 +11,18 @@ import java.util.List;
 @RequestMapping(value = "/user")
 public class UserController {
 
+    @Autowired
     private UserService userService;
 
     @GetMapping("/getUsers")
     public List<OrmUser> getUsers() {
-        List<OrmUser> users=userService.getAll();
+        List<OrmUser> users = userService.getAll();
         return users;
     }
 
     @GetMapping("/getUser")
     public OrmUser getUser(Integer id) {
-        OrmUser user=userService.selectByPrimaryKey(id);
+        OrmUser user = userService.selectByPrimaryKey(id);
         return user;
     }
 
@@ -29,12 +31,12 @@ public class UserController {
         userService.insertSelective(user);
     }
 
-    @PutMapping(value="update")
+    @PutMapping(value = "update")
     public void update(OrmUser user) {
         userService.updateByPrimaryKeySelective(user);
     }
 
-    @DeleteMapping(value="/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public void delete(@PathVariable("id") Integer id) {
         userService.deleteByPrimaryKey(id);
     }
