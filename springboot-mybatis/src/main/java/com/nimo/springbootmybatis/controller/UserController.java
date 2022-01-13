@@ -23,7 +23,7 @@ public class UserController {
         return users;
     }
 
-    @GetMapping("/getUser")
+    @PostMapping("/getUser")
     public OrmUser getUser(Integer id) {
         OrmUser user = userService.selectByPrimaryKey(id);
         return user;
@@ -44,7 +44,7 @@ public class UserController {
         userService.deleteByPrimaryKey(id);
     }
 
-    @GetMapping("/page")
+    @PostMapping("/page")
     public PageData<OrmUser> page(Integer page, Integer size) {
         PageInfo<OrmUser> ormUserPageInfo = userService.pageAll(page, size);
         List<OrmUser> list = ormUserPageInfo.getList();
