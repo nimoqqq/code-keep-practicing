@@ -5,6 +5,7 @@
 
 ## Spring 整合 Mybatis：springboot-mybatis
 
-
+## Spring 整合 Security
+* 参考链接 [SpringSecurity系列教程汇总](https://yiyige.blog.csdn.net/article/details/120157181)
 # 延伸阅读
 

@@ -1,0 +1,5 @@
+spring:
+  security:
+    user:
+      name: nimo
+      password: 123

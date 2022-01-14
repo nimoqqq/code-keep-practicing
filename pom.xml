@@ -4,7 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.nimo</groupId>
     <artifactId>code-keep-practicing</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>springboot-security</module>
+        <module>springboot-exception-handler</module>
+        <module>springboot-mybatis</module>
+    </modules>
     <name>code-keep-practicing</name>
     <description>Demo project for Spring Boot</description>
 
