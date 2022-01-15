@@ -1,0 +1,2 @@
+INSERT INTO `security_test`.`users` (`id`, `username`, `password`, `enable`, `roles`) VALUES (1, 'user', '123', 1, 'ROLE_USER');
+INSERT INTO `security_test`.`users` (`id`, `username`, `password`, `enable`, `roles`) VALUES (2, 'admin', '123', 1, 'ROLE_ADMIN');
