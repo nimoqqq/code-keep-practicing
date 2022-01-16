@@ -1,9 +1,11 @@
 package com.nimo.security.config;
 
+import com.nimo.security.filter.VerificationCodeFilter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 //@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -57,6 +59,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //注意:需禁用crsf防护功能,否则登录不成功（crsf 跨站请求伪造）
                 .csrf()
                 .disable();
+
+        //将过滤器添加在UsernamePasswordAuthenticationFilter之前
+        http.addFilterBefore(new VerificationCodeFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
 

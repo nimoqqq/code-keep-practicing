@@ -10,6 +10,7 @@
         <module>springboot-security</module>
         <module>springboot-exception-handler</module>
         <module>springboot-mybatis</module>
+        <module>springboot-security-captcha</module>
     </modules>
     <name>code-keep-practicing</name>
     <description>Demo project for Spring Boot</description>

@@ -22,7 +22,7 @@ import javax.sql.DataSource;
  * @author: chuf
  * @create: 2022-01-15 12:01
  **/
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 public class SecurityConfigSeparate extends WebSecurityConfigurerAdapter {
 
     @Override
