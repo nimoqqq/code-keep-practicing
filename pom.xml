@@ -11,6 +11,7 @@
         <module>springboot-exception-handler</module>
         <module>springboot-mybatis</module>
         <module>springboot-aop</module>
+        <module>springboot-admin</module>
     </modules>
     <name>code-keep-practicing</name>
     <description>Demo project for Spring Boot</description>
