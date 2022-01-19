@@ -12,6 +12,7 @@
         <module>springboot-mybatis</module>
         <module>springboot-aop</module>
         <module>springboot-admin</module>
+        <module>springboot-filter</module>
     </modules>
     <name>code-keep-practicing</name>
     <description>Demo project for Spring Boot</description>
@@ -44,6 +45,10 @@
             <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-mockmvc</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 
