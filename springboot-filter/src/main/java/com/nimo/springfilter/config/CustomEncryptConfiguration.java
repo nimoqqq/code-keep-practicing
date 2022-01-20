@@ -20,7 +20,7 @@ public class CustomEncryptConfiguration {
     public FilterRegistrationBean<CustomEncryptFilter> customEncryptFilter(ObjectMapper objectMapper){
         FilterRegistrationBean<CustomEncryptFilter> bean = new FilterRegistrationBean<>(new CustomEncryptFilter(objectMapper));
         // 只过滤 app 相关请求
-        bean.addUrlPatterns("/app/*");
+        bean.addUrlPatterns("/e/*");
         return bean;
     }
 }
