@@ -37,6 +37,7 @@ public class CustomEncryptFilter extends OncePerRequestFilter {
         final String contentType = request.getContentType();
         String requestBody = null;
         boolean shouldEncrypt = false;
+        //application/x-www-form-urlencoded & application/json
         if (StringUtils.substringMatch(contentType, 0, MediaType.APPLICATION_FORM_URLENCODED_VALUE)) {
             shouldEncrypt = true;
             requestBody = convertFormToString(request);
@@ -48,6 +49,7 @@ public class CustomEncryptFilter extends OncePerRequestFilter {
         if (!shouldEncrypt) {
             filterChain.doFilter(request, response);
         } else {
+            // 将 request 重新赋值
             CustomEncryptHttpWrapper wrapper = new CustomEncryptHttpWrapper(request, requestBody);
             wrapper.putHeader("Content-Type", MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE);
             filterChain.doFilter(wrapper, response);
@@ -56,6 +58,7 @@ public class CustomEncryptFilter extends OncePerRequestFilter {
 
     private String convertFormToString(HttpServletRequest request) {
         Map<String, String> result = new HashMap<>(8);
+        // 获取表单中的所有属性和对应值
         Enumeration<String> parameterNames = request.getParameterNames();
         while (parameterNames.hasMoreElements()) {
             String name = parameterNames.nextElement();

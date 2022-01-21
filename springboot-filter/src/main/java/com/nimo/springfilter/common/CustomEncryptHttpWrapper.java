@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -24,7 +23,7 @@ import java.util.Map;
 public class CustomEncryptHttpWrapper extends HttpServletRequestWrapper {
 
     private final Map<String, String> headers = new HashMap<>(8);
-    private byte[] data;
+    private final byte[] data;
 
     public CustomEncryptHttpWrapper(HttpServletRequest request, String content) {
         super(request);
