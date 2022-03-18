@@ -1,5 +1,7 @@
 package com.nimo.springbootjavabasic.designPattern.strategy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -13,9 +15,11 @@ import javax.annotation.PostConstruct;
  **/
 @Component
 public class WaiMai extends AbstractStrategy implements Strategy {
+    private static final Logger LOGGER = LoggerFactory.getLogger(WaiMai.class);
 
     @PostConstruct
     private void init() {
+        LOGGER.info("开始注册策略类...");
         registerStrategy();
     }
 
