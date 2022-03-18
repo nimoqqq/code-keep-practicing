@@ -10,17 +10,25 @@ import java.util.Map;
  * @author: chuf
  * @create: 2022-03-18 13:50
  **/
-public class SrategyContext {
+public class StrategyContext {
 
-    private static final Map<String, Srategy> registerMap = new HashMap<>();
+    private static final Map<String, Strategy> registerMap = new HashMap<>();
 
-    // 注册策略
-    public static void registerSrategy(String type, Srategy srategy) {
-        registerMap.put(type, srategy);
+    /**
+     * 注册策略
+     * @param type :策略类型
+     * @param strategy : 策略类{@link Strategy}
+     */
+    public static void registerStrategy(String type, Strategy strategy) {
+        registerMap.put(type, strategy);
     }
 
-    // 获取策略
-    public static Srategy getSrategy(String type) {
+    /**
+     * 获取策略
+     * @param type :策略类型
+     * @return : {@link Strategy}
+     */
+    public static Strategy getStrategy(String type) {
         return registerMap.get(type);
     }
 }
