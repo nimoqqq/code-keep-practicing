@@ -1,5 +1,6 @@
 package com.nimo.rabbitMQ.config;
 
+import lombok.Getter;
 import org.springframework.amqp.core.Queue;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -12,12 +13,13 @@ import org.springframework.context.annotation.Configuration;
  * @author: chuf
  * @create: 2022-03-23 15:02
  **/
-@SpringBootConfiguration
 @Configuration
+@Getter
 public class RabbitmqConfig {
+    public static final String QUEUE_NAME = "queue_work";
 
     @Bean
     public Queue queueWork1() {
-        return new Queue("queue_work");
+        return new Queue(QUEUE_NAME);
     }
 }

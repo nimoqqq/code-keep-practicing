@@ -1,5 +1,6 @@
 package com.nimo.rabbitMQ.services.impl;
 
+import com.nimo.rabbitMQ.config.RabbitmqConfig;
 import com.nimo.rabbitMQ.services.RabbitmqService;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class RabbitmqServiceImpl implements RabbitmqService {
     @Override
     public void sendWork() {
         for (int i = 0; i < 10; i++) {
-            rabbitTemplate.convertAndSend("queue_work", "测试work模型: " + i);
+            rabbitTemplate.convertAndSend(RabbitmqConfig.QUEUE_NAME, "测试work模型: " + i);
         }
     }
 }
