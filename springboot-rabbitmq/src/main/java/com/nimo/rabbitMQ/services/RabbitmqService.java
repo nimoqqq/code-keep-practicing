@@ -18,4 +18,14 @@ public interface RabbitmqService {
      * 发布订阅模式
      */
     void sendPublish();
+
+    /**
+     * Topic模式
+     */
+    void sendTopic();
+
+    /**
+     * confirm 机制
+     */
+    void sendConfirm();
 }

@@ -29,4 +29,17 @@ public class RabbitmqController {
         rabbitmqService.sendPublish();
         return "publish发送成功...";
     }
+
+    @RequestMapping("/sendTopic")
+    public String sendTopic() {
+        rabbitmqService.sendTopic();
+        return "Topic发送成功...";
+    }
+
+    @RequestMapping("/sendConfirm")
+    public String sendConfirm() {
+        rabbitmqService.sendConfirm();
+        return "Confirm发送成功...";
+    }
+
 }

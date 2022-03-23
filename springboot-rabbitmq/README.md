@@ -1,0 +1,1 @@
+* springboot整合 rabbitMQ：https://blog.csdn.net/fan521dan/article/details/104912794

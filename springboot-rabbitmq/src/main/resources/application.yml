@@ -13,3 +13,5 @@ spring:
       direct:
         # 开启手动确认机制
         acknowledge-mode: manual
+    # 开启消息确认机制
+    publisher-confirm-type: correlated
