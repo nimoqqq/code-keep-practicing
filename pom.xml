@@ -14,6 +14,7 @@
         <module>springboot-admin</module>
         <module>springboot-filter</module>
         <module>springboot-rabbitmq</module>
+        <module>springboot-mybatisPlus</module>
     </modules>
     <name>code-keep-practicing</name>
     <description>Demo project for Spring Boot</description>
