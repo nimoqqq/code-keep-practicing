@@ -21,6 +21,12 @@ public class RabbitmqController {
     @RequestMapping("/sendWork")
     public Object sendWork() {
         rabbitmqService.sendWork();
-        return "发送成功...";
+        return "work发送成功...";
+    }
+
+    @RequestMapping("/sendPublish")
+    public Object sendPublish() {
+        rabbitmqService.sendPublish();
+        return "publish发送成功...";
     }
 }

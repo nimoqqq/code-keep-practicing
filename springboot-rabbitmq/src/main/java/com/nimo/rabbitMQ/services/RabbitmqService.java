@@ -9,5 +9,13 @@ package com.nimo.rabbitMQ.services;
  **/
 public interface RabbitmqService {
 
+    /**
+     * work 模式
+     */
     void sendWork();
+
+    /**
+     * 发布订阅模式
+     */
+    void sendPublish();
 }

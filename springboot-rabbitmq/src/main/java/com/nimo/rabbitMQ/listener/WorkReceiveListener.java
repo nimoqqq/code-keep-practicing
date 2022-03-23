@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * @program: code-keep-practicing
  * @ClassName: WorkReceiveListener
- * @description: 消费端监听
+ * @description: 消费端监听-work模式
  * @author: chuf
  * @create: 2022-03-23 15:16
  **/
@@ -30,4 +30,5 @@ public class WorkReceiveListener {
         // 包含所有的信息
         System.out.println("2接收到消息：" + obj);
     }
+
 }

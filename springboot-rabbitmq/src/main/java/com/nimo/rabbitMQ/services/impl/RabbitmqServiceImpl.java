@@ -25,4 +25,11 @@ public class RabbitmqServiceImpl implements RabbitmqService {
             rabbitTemplate.convertAndSend(RabbitmqConfig.QUEUE_NAME, "测试work模型: " + i);
         }
     }
+
+    @Override
+    public void sendPublish() {
+        for (int i = 0; i < 5; i++) {
+            rabbitTemplate.convertAndSend(RabbitmqConfig.FANOUT_EXCHANGE, "", "测试publish模型: " + i);
+        }
+    }
 }
