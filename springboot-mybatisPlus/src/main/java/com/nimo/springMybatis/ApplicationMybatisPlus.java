@@ -13,8 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  **/
 @SpringBootApplication
 @MapperScan("com.nimo.springMybatis.mapper")
-public class Application {
+public class ApplicationMybatisPlus {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(ApplicationMybatisPlus.class, args);
     }
 }
