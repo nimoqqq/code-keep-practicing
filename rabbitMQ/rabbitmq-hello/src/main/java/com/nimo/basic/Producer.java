@@ -3,6 +3,7 @@ package com.nimo.basic;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -15,6 +16,7 @@ import java.util.concurrent.TimeoutException;
  * @author: chuf
  * @create: 2022-03-27 11:14
  **/
+@Slf4j
 public class Producer {
 
     private final static String HELLO_QUEUE = "hello_queue";
@@ -48,6 +50,7 @@ public class Producer {
              * 4.发送消息体
              */
             channel.basicPublish("", HELLO_QUEUE, null, message.getBytes(StandardCharsets.UTF_8));
+            log.info("消息发送完毕");
         }
     }
 }

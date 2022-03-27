@@ -24,15 +24,21 @@ public class Consumer {
         factory.setPassword("guest");
 
         // 建立连接，并创建信道
-        try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
-            log.info("等待接收消息。。。");
+        Connection connection = factory.newConnection();
+        Channel channel = connection.createChannel();
 
-            // 接收消息
-            DeliverCallback deliverCallback = (consumerTag, message) -> log.info("接收到的消息: {}",message);
-            //取消消息
-            CancelCallback cancelCallback = (consumerTag) -> log.info("消息消费被中断");
+        log.info("等待接收消息。。。");
+        // 接收消息
+        DeliverCallback deliverCallback = (consumerTag, message) -> log.info(new String(message.getBody()));
+        //取消消息
+        CancelCallback cancelCallback = (consumerTag) -> log.info("消息消费被中断");
 
-            channel.basicConsume(HELLO_QUEUE, true, deliverCallback,cancelCallback);
-        }
+        /*
+         * 消费者消费消息
+         * 1. 队列
+         * 2. 自动 ack
+         * 3. 回调
+         */
+        channel.basicConsume(HELLO_QUEUE, true, deliverCallback, cancelCallback);
     }
 }
