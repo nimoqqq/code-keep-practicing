@@ -13,8 +13,8 @@
         <module>springboot-aop</module>
         <module>springboot-admin</module>
         <module>springboot-filter</module>
-        <module>springboot-rabbitmq</module>
         <module>springboot-mybatisPlus</module>
+        <module>rabbitMQ</module>
     </modules>
     <name>code-keep-practicing</name>
     <description>Demo project for Spring Boot</description>
