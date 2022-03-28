@@ -8,6 +8,9 @@
 ## Spring 整合 Security
 * 参考链接 [SpringSecurity系列教程汇总](https://yiyige.blog.csdn.net/article/details/120157181)
 
+## rabbitMQ入门：rabbitMQ
+
+## easyexcel demo： springboot-easyexcel
 
 # 延伸阅读
 * 拦截器和过滤器的区别：[过滤器 和 拦截器 6个区别](https://segmentfault.com/a/1190000022833940)
