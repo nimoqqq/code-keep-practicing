@@ -15,3 +15,5 @@ spring:
         acknowledge-mode: manual
     # 开启消息确认机制
     publisher-confirm-type: correlated
+    # 开启回退消息
+    publisher-returns: true
