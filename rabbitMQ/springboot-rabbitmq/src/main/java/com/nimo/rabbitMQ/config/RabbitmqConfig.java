@@ -224,5 +224,24 @@ public class RabbitmqConfig {
         return BindingBuilder.bind(queueD).to(yExchange).with("YD");
     }
 
+
+    @Bean("queueC")
+    public Queue queueC() {
+        Map<String, Object> map = new HashMap<>(3);
+
+        //声明当前队列绑定的死信交换机
+        map.put("x-dead-letter-exchange", Y_DEAD_LETTER_EXCHANGE);
+        //声明当前队列的死信路由 key
+        map.put("x-dead-letter-routing-key", "YD");
+
+        return QueueBuilder.durable(QUEUE_C).withArguments(map).build();
+    }
+
+    @Bean
+    public Binding queueBindingXC(@Qualifier("queueC") Queue queueC,
+                                  @Qualifier("xExchange") DirectExchange xExchange) {
+        return BindingBuilder.bind(queueC).to(xExchange).with("XC");
+    }
+
     //=======================ttl end==========================
 }
