@@ -15,6 +15,7 @@
         <module>springboot-filter</module>
         <module>springboot-mybatisPlus</module>
         <module>rabbitMQ</module>
+        <module>springboot-easyexcel</module>
     </modules>
     <name>code-keep-practicing</name>
     <description>Demo project for Spring Boot</description>
