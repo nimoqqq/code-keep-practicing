@@ -2,8 +2,12 @@ package com.nimo.rabbitMQ.config;
 
 import lombok.Getter;
 import org.springframework.amqp.core.*;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @program: code-keep-practicing
@@ -120,4 +124,105 @@ public class RabbitmqConfig {
     }
 
     //=======================confirm end==========================
+
+    //=======================ttl start==========================
+
+    public static final String X_EXCHANGE = "x_exchange";
+
+    public static final String QUEUE_A = "qa";
+    public static final String QUEUE_B = "qb";
+
+    public static final String Y_DEAD_LETTER_EXCHANGE = "y_dead_letter_exchange";
+
+    public static final String DEAD_LETTER_QUEUE = "qd";
+
+    // 死信队列
+    public static final String QUEUE_C = "qc";
+
+    @Bean("xExchange")
+    public DirectExchange xExchange() {
+        return new DirectExchange(X_EXCHANGE);
+    }
+
+    @Bean("yExchange")
+    public DirectExchange yExchange() {
+        return new DirectExchange(Y_DEAD_LETTER_EXCHANGE);
+    }
+
+    @Bean("queueA")
+    public Queue queueA() {
+        Map<String, Object> map = new HashMap<>(3);
+
+        //声明当前队列绑定的死信交换机
+        map.put("x-dead-letter-exchange", Y_DEAD_LETTER_EXCHANGE);
+        //声明当前队列的死信路由 key
+        map.put("x-dead-letter-routing-key", "YD");
+        //声明队列的 TTL
+        map.put("x-message-ttl", 10000);
+
+        return QueueBuilder.durable(QUEUE_A).withArguments(map).build();
+    }
+
+    /**
+     * 声明队列 A 绑定 X 交换机
+     *
+     * @param queueA    队列
+     * @param xExchange 交换机
+     * @return {@link Binding}
+     */
+    @Bean
+    public Binding queueBindingXA(@Qualifier("queueA") Queue queueA,
+                                  @Qualifier("xExchange") DirectExchange xExchange) {
+        return BindingBuilder.bind(queueA).to(xExchange).with("XA");
+    }
+
+    /**
+     * 声明队列 B ttl 为 40s 并绑定到对应的死信交换机
+     *
+     * @return {@link Queue}
+     */
+    @Bean("queueB")
+    public Queue queueB() {
+        Map<String, Object> map = new HashMap<>(3);
+
+        //声明当前队列绑定的死信交换机
+        map.put("x-dead-letter-exchange", Y_DEAD_LETTER_EXCHANGE);
+        //声明当前队列的死信路由 key
+        map.put("x-dead-letter-routing-key", "YD");
+        //声明队列的 TTL
+        map.put("x-message-ttl", 40000);
+
+        return QueueBuilder.durable(QUEUE_B).withArguments(map).build();
+    }
+
+    @Bean
+    public Binding queueBindingXB(@Qualifier("queueB") Queue queueB,
+                                  @Qualifier("xExchange") DirectExchange xExchange) {
+        return BindingBuilder.bind(queueB).to(xExchange).with("XB");
+    }
+
+    /**
+     * 声明死信队列 QD
+     *
+     * @return
+     */
+    @Bean("queueD")
+    public Queue queueD() {
+        return new Queue(DEAD_LETTER_QUEUE);
+    }
+
+    /**
+     * 声明死信队列 QD 绑定关系
+     * @param queueD 死信队列
+     * @param yExchange 死信交换机
+     * @return
+     */
+    @Bean
+    public Binding deadLetterBindingQAD(@Qualifier("queueD") Queue queueD,
+                                        @Qualifier("yExchange") DirectExchange yExchange) {
+
+        return BindingBuilder.bind(queueD).to(yExchange).with("YD");
+    }
+
+    //=======================ttl end==========================
 }
