@@ -14,7 +14,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * @program: code-keep-practicing
  * @ClassName: producer
- * @description: 基础模式、生产者
+ * @description: 生产者
  * @author: chuf
  * @create: 2022-03-27 11:14
  **/
