@@ -25,9 +25,6 @@ public class Producer {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @Autowired
-    private MyCallBack myCallBack;
-
     @GetMapping("sendMessage/{message}")
     public void sendMessage(@PathVariable String message) {
         //指定消息 id 为 1
