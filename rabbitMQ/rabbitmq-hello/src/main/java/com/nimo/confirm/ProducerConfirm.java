@@ -113,7 +113,7 @@ public class ProducerConfirm {
              * 1.确认收到消息的回调
              * 2.未收到消息的回调
              */
-            channel.addConfirmListener(ackCallback, null);
+            channel.addConfirmListener(ackCallback, nackCallback);
             long begin = System.currentTimeMillis();
             for (int i = 0; i < 10; i++) {
                 String message = "消息" + i;
