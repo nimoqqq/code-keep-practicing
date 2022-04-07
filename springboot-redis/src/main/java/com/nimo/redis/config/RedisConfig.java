@@ -9,8 +9,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
+
+import java.net.UnknownHostException;
 
 /**
  * @program: code-keep-practicing
@@ -19,25 +20,27 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @author: chuf
  * @create: 2022-04-04 10:32
  **/
-//@EnableCaching
-//@Configuration
+@EnableCaching
+@Configuration
 public class RedisConfig extends CachingConfigurerSupport {
 
-//    @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
-        RedisTemplate<String, Object> template = new RedisTemplate<>();
-        template.setConnectionFactory(factory);
-        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-        template.setKeySerializer(stringRedisSerializer);
-        template.setHashKeySerializer(stringRedisSerializer);
-        Jackson2JsonRedisSerializer redisSerializer = new Jackson2JsonRedisSerializer(Object.class);
-        ObjectMapper om = new ObjectMapper();
-        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
-        redisSerializer.setObjectMapper(om);
-        template.setValueSerializer(redisSerializer);
-        template.setHashValueSerializer(redisSerializer);
+    @Bean
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) throws UnknownHostException {
+        // 将template 泛型设置为 <String, Object>
+        RedisTemplate<String, Object> template = new RedisTemplate();
+        // 连接工厂，不必修改
+        template.setConnectionFactory(redisConnectionFactory);
+        /*
+         * 序列化设置
+         */
+        // key、hash的key 采用 String序列化方式
+        template.setKeySerializer(RedisSerializer.string());
+        template.setHashKeySerializer(RedisSerializer.string());
+        // value、hash的value 采用 Jackson 序列化方式
+        template.setValueSerializer(RedisSerializer.json());
+        template.setHashValueSerializer(RedisSerializer.json());
         template.afterPropertiesSet();
+
         return template;
     }
 }
