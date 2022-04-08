@@ -28,7 +28,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) throws UnknownHostException {
         // 将template 泛型设置为 <String, Object>
         RedisTemplate<String, Object> template = new RedisTemplate();
-        // 连接工厂，不必修改
+        // 连接工厂
         template.setConnectionFactory(redisConnectionFactory);
         /*
          * 序列化设置
