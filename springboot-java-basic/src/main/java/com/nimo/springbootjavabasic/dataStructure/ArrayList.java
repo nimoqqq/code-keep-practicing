@@ -62,12 +62,28 @@ public class ArrayList<E> {
 
     /**
      * 获取index位置的元素
+     *
      * @param index
      * @return
      */
     public E get(int index) {
         rangeCheck(index);
         return elements[index];
+    }
+
+    /**
+     * 设置index位置的元素
+     *
+     * @param index
+     * @param element
+     * @return 原来的元素ֵ
+     */
+    public E set(int index, E element) {
+        rangeCheck(index);
+
+        E old = elements[index];
+        elements[index] = element;
+        return old;
     }
 
     /**
