@@ -72,6 +72,24 @@ public class ArrayList<E> {
     }
 
     /**
+     * 删除index位置的元素
+     *
+     * @param index
+     * @return
+     */
+    public E remove(int index) {
+        rangeCheck(index);
+
+        E old = elements[index];
+        for (int i = index + 1; i < size; i++) {
+            elements[i - 1] = elements[i];
+        }
+        elements[--size] = null;
+        return old;
+    }
+
+
+    /**
      * 设置index位置的元素
      *
      * @param index
