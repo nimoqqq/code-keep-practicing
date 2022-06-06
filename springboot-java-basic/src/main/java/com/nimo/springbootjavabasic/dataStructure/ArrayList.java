@@ -59,6 +59,17 @@ public class ArrayList<E> {
         add(size, element);
     }
 
+
+    /**
+     * 获取index位置的元素
+     * @param index
+     * @return
+     */
+    public E get(int index) {
+        rangeCheck(index);
+        return elements[index];
+    }
+
     /**
      * 在index位置插入一个元素
      *
@@ -96,17 +107,6 @@ public class ArrayList<E> {
         return ELEMENT_NOT_FOUND;
     }
 
-
-    private void rangeCheckForAdd(int index) {
-        if (index < 0 || index > size) {
-            outOfBounds(index);
-        }
-    }
-
-    private void outOfBounds(int index) {
-        throw new IndexOutOfBoundsException("Index:" + index + ", Size:" + size);
-    }
-
     /**
      * 保证要有capacity的容量
      *
@@ -123,5 +123,22 @@ public class ArrayList<E> {
             newElements[i] = elements[i];
         }
         elements = newElements;
+    }
+
+
+    private void rangeCheckForAdd(int index) {
+        if (index < 0 || index > size) {
+            outOfBounds(index);
+        }
+    }
+
+    private void outOfBounds(int index) {
+        throw new IndexOutOfBoundsException("Index:" + index + ", Size:" + size);
+    }
+
+    private void rangeCheck(int index) {
+        if (index < 0 || index >= size) {
+            outOfBounds(index);
+        }
     }
 }
