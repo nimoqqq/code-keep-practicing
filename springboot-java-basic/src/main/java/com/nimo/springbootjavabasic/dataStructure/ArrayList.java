@@ -56,7 +56,7 @@ public class ArrayList<E> {
      * @param element
      */
     public void add(E element) {
-
+        add(size, element);
     }
 
     /**
