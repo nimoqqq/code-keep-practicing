@@ -12,6 +12,14 @@ public class MyFilter implements Filter {
         Filter.super.init(filterConfig);
     }
 
+    /**
+     *
+     * @param servletRequest 上一个 filter 返回的 request
+     * @param servletResponse 上一个 filter 返回的 response
+     * @param filterChain 当前 filter，用来调用下一个 filter
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
