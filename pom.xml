@@ -17,6 +17,7 @@
         <module>rabbitMQ</module>
         <module>springboot-easyexcel</module>
         <module>springboot-redis</module>
+        <module>00-leetcode</module>
     </modules>
     <name>code-keep-practicing</name>
     <description>Demo project for Spring Boot</description>
