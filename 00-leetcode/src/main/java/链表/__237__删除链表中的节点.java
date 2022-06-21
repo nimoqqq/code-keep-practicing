@@ -2,6 +2,7 @@ package 链表;
 
 /**
  * https://leetcode.cn/problems/delete-node-in-a-linked-list/
+ * 解决思路：替换
  *
  * @author : chuf
  * @date : 2022-06-08
