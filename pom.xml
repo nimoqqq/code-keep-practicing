@@ -19,6 +19,7 @@
         <module>springboot-redis</module>
         <module>00-leetcode</module>
         <module>JavaMultiThreadInAction</module>
+        <module>springboot-file-server</module>
     </modules>
     <name>code-keep-practicing</name>
     <description>Demo project for Spring Boot</description>

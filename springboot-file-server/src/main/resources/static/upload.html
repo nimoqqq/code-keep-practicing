@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webUploader</title>
+</head>
+<link rel="stylesheet" type="text/css" href="webuploader.css">
+<script src="jquery-3.4.1.min.js"></script>
+<script src="webuploader.js"></script>
+<style>
+    #upload-container, #upload-list{
+        width: 500px;
+        margin: 0 auto;
+    }
+    #upload-container{
+        cursor: pointer;
+        border-radius: 15px;
+        background: #eeefff;
+        height: 200px;
+    }
+    #upload-list{
+        height: 800px;
+        border: 1px solid #eee;
+        border-radius: 5px;
+        margin-top: 10px;
+        /* padding: ; */
+    }
+    #upload-container>span{
+        width: 100%;
+        text-align: center;
+        color: gray;
+        display: block;
+    }
+    .upoload-item{
+        margin-top: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid gray;
+    }
+    .percentage{
+        height: 5px;
+        background: green;
+    }
+    .btn-delete, .btn-retry{
+        cursor: pointer;
+        color: gray;
+    }
+    .btn-delete:hover{
+        color: orange;
+    }
+    .btn-retry:hover{
+        color-scheme: green;
+    }
+
+</style>
+<body>
+<div id="upload-container">
+    <span>点击或将文件拖拽至此上传</span>
+</div>
+<div id="upload-list"></div>
+<button id="picker">点击上传文件</button>
+</body>
+<script>
+    $('#upload-container').click(function(event){
+        $('#picker').find('input').click()
+    })
+    var uploader = WebUploader.create({
+        auto: true,     // 选完文件后你， 是否自动上传
+        swf: 'Uploader.swf',    // swf 文件路径
+        server: 'http://localhost:8181/upload',    //  文件结束有服务端
+        dnd: '#upload-container',   
+        pick: '#picker',    // 内部根据放钱运行是创建，可能是 input 元素， 也可能是 flash, 这里 是 div 的 id
+        multiple: true, // 选择多个
+        chunked: true,  // 开启分片上传 
+        threads: 20,    // 上传并发数， 允许同时最大上传进程数
+        method: 'Post', // 文件上传方式  post 或 get
+        fileSizeLimit: 1024*1024*1024*10,   // 验证你闻见总大小是否超出限制， 超出则不允许加入队列
+        fileSingleSizeLimit: 1024*1024*1024,    // 验证单个文件大小是否超出限制， 超出不允许加入队列
+        fileVal: 'upload',  //   【默认值： ’file'】  设置文件上传域的 name
+    })
+    uploader.on('fileQueued', function(file){
+        var html = '<div class="upload-item"><span>文件名：'+ '  </span><span data-file_id="'+ file.id +'" class="butn-delete">删除</span><span data-file_id="'+ file.id +'" class="butn-retry">重试</span><div class="percentage' + file.id +'" style="width: 0%;height: 10px;background: green;"></div></div>'
+        $('#upload-list').append(html)
+        uploader.md5File( file )
+        .progress(function(percentage){
+            console.log('percentage', percentage);
+        })
+        .then(function(val){
+            console.log('md5 result', val);
+        })
+    })
+    uploader.on('uploadProgress', function(file, percentage){
+        console.log(percentage*100+ '%');
+        console.log($(".upload-item"))
+        var width = $(".upload-item").width()
+        console.log(width)
+        console.log(width*percentage)
+        $('.percentage'+file.id).width(width*percentage+'%')
+    })
+    uploader.on('uploadSuccess', function(file, response){
+        console.log(file.id+ '传输成功');
+    })
+    uploader.on('uploadError', function(file){
+        console.log(file);
+        console.log(file.id + 'upload error');
+    })
+    $('#upload-list').on('click', 'upload-item .btn-delete', function(){
+        file_id = $(this).data('file_id')
+        uploader.removeFile(file_id, true)
+        console.log(uploader.getFiles());
+    })
+    $('#upload-list').on('click', '.btn-retry', function(){
+        upload.retry($(this).data('file_id'))
+    })
+    uploader.on('uploadComplete', function(){
+        console.log(uploader.getFiles());
+    })
+
+</script>
+</html>
