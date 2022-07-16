@@ -28,4 +28,6 @@ public interface RabbitmqService {
      * confirm 机制
      */
     void sendConfirm();
+
+    void sendMessage(String message);
 }

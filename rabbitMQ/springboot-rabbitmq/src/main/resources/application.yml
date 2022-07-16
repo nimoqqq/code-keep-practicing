@@ -5,10 +5,10 @@ spring:
   application:
     name: springboot-tabbitmq
   rabbitmq:
-    host: 127.0.0.1
+    host: 192.168.0.88
     port: 5672
-    username: guest
-    password: guest
+    username: mqtt_test
+    password: 1234Qwermq
     listener:
       direct:
         # 开启手动确认机制

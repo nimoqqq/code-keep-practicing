@@ -2,6 +2,8 @@ package com.nimo.rabbitMQ.controller;
 
 import com.nimo.rabbitMQ.services.RabbitmqService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,4 +44,9 @@ public class RabbitmqController {
         return "Confirm发送成功...";
     }
 
+    @PostMapping(value = "/test")
+    public String sendMessage(@RequestBody String message) {
+        rabbitmqService.sendMessage(message);
+        return "成功";
+    }
 }

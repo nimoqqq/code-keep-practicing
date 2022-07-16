@@ -55,6 +55,14 @@ public class RabbitmqServiceImpl implements RabbitmqService {
         rabbitTemplate.setConfirmCallback(confirmCallback);
     }
 
+    /**
+     * 业务功能测试
+     */
+    @Override
+    public void sendMessage(String message) {
+        rabbitTemplate.convertAndSend("amq.topic", ".v1.1", message);
+    }
+
 
     /**
      * 配置 confirm 机制
