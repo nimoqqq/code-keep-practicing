@@ -108,6 +108,32 @@ public class DownloadClient {
         return new FileInfo(Long.valueOf(fSize), fName);
     }
 
+    public static void main(String[] args) throws Exception {
+        String down_path = "/Users/chuf/Downloads/dmg";
+        String fName = "Dropzone_4_4.4.7_macwk.com.dmg";
+        String tName = "aac7aa79b23144218a5c389d08f3f0d1";
+        Long page = 7L;
+        //归并文件位置
+        File file = new File(down_path, fName);
+        BufferedOutputStream os = new BufferedOutputStream(new FileOutputStream(file));
+        for (int i = 0; i < page; i++) {
+            File tempFile = null;
+            if (i == 0) {
+                tempFile = new File(down_path, tName + ".dmg");
+            }else {
+                tempFile = new File(down_path, tName + " (" + i + ")" + ".dmg");
+            }
+            byte[] bytes = FileUtils.readFileToByteArray(tempFile);
+            os.write(bytes);
+            os.flush();
+            tempFile.delete();
+        }
+        File file1 = new File(down_path, -1 + "-null");
+        file1.delete();
+        os.flush();
+        os.close();
+    }
+
     private void mergeFile(String fName, long page) throws Exception {
         //归并文件位置
         File file = new File(down_path, fName);
