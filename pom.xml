@@ -20,6 +20,7 @@
         <module>00-leetcode</module>
         <module>JavaMultiThreadInAction</module>
         <module>springboot-file-server</module>
+        <module>study-code-demo</module>
     </modules>
     <name>code-keep-practicing</name>
     <description>Demo project for Spring Boot</description>
