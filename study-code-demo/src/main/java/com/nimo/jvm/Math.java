@@ -1,4 +1,4 @@
-package cn.nimo.test;
+package com.nimo.jvm;
 
 /**
  * @author : chuf
@@ -19,5 +19,28 @@ public class Math {
     public static void main(String[] args) {
         Math math = new Math();
         math.compute();
+    }
+}
+
+class User {
+
+    private String name;
+
+    private int age;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
