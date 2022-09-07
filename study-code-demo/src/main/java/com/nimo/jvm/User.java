@@ -46,6 +46,8 @@ public class User {
 
     @Override
     protected void finalize() throws Throwable {
-        System.out.println("关闭资源, userId = " + id + "即将被回收");
+        // 避免对象被回收
+        OOMTest.list.add(this);
+//        System.out.println("关闭资源, userId = " + id + "即将被回收");
     }
 }
