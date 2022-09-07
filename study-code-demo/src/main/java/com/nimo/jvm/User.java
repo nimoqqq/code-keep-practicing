@@ -11,6 +11,15 @@ public class User {
 
     private int age;
 
+    public User(Integer id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public User() {
+    }
+
     public String getName() {
         return name;
     }
@@ -33,5 +42,10 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("关闭资源, userId = " + id + "即将被回收");
     }
 }
