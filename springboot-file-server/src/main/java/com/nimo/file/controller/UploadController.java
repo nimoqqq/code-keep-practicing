@@ -29,6 +29,7 @@ public class UploadController {
     @RequestMapping("/upload")
     @ResponseBody
     public void upload(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        System.out.println("执行。。。。。。");
         response.setCharacterEncoding(utf8);
 
         // 当前分片

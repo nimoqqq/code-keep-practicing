@@ -21,6 +21,7 @@
         <module>JavaMultiThreadInAction</module>
         <module>springboot-file-server</module>
         <module>study-code-demo</module>
+        <module>design-patterns</module>
     </modules>
     <name>code-keep-practicing</name>
     <description>Demo project for Spring Boot</description>
