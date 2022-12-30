@@ -2,7 +2,7 @@ package 链表;
 
 /**
  * https://leetcode.cn/problems/reverse-linked-list/
- *
+ * 需要对当前节点、以及它之前和之后的节点进行缓存，在完成翻转动作
  * @author : chuf
  * @date : 2022-06-09
  **/
