@@ -2,7 +2,7 @@ package com.nimo.design.creatation.singleton;
 
 /**
  * 静态内部类
- *
+ * 唯一性、创建过程的线程安全性，都由 JVM 来保证
  * @author : chuf
  * @date : 2023-05-09
  **/
